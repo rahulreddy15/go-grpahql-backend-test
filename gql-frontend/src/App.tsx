@@ -1,11 +1,28 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
+import { graphql } from 'relay-runtime'
+import { useLazyLoadQuery } from "react-relay";
 import viteLogo from '/vite.svg'
 import './App.css'
 
+const AppQuery = graphql`
+  query AppQuery {
+    books {
+      id
+      title
+      author
+      genre
+    }
+  }
+`
+
 function App() {
   const [count, setCount] = useState(0)
-
+  
+  const data = useLazyLoadQuery(
+    AppQuery,
+    {},
+  );
   return (
     <>
       <div>
@@ -28,6 +45,14 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <div>
+        <h2>Books</h2>
+        <pre>
+          <code>
+            {JSON.stringify(data, null, 4)}
+          </code>
+        </pre>
+      </div>
     </>
   )
 }
