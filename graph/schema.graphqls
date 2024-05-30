@@ -16,3 +16,32 @@ type Mutation {
   updateBook(id: String!, title: String, author: String, publicationYear: Int, genre: String): Book!
   deleteBook(id: String!): ID!
 }
+
+enum PropertyType {
+  RESIDENTIAL
+  COMMERCIAL
+}
+
+type Property {
+  id: ID!
+  type: PropertyType
+  name: String!
+  location: String!
+  units: [Unit!]!
+  address: String!
+  title_image: String!
+  images: [String!]!
+}
+
+interface Unit {
+  id: ID!
+  property: Property!
+}
+
+type ResidentialUnit implements Unit {
+
+}
+
+type CommercialUnit implements Unit {
+
+}

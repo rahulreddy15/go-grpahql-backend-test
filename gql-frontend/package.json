@@ -9,6 +9,7 @@
     "preview": "vite preview",
     "relay": "relay-compiler",
     "print-schema": "cp -v ../graph/schema.graphqls ./src/schema.graphql",
+    "build-backend": "cd .. && go build",
     "watch-relay": "relay-compiler --watch",
     "watch-vite": "vite",
     "watch-server": "cd .. && make run",

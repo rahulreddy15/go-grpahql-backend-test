@@ -3,7 +3,7 @@
 DATABASE_URL := "postgres://postgres:1234@localhost:5432/book_management_api?sslmode=disable"
 
 run:
-	go run .
+	go build && ./books-api
 
 migrate-up:
 	migrate -database $(DATABASE_URL) -path migrations up
